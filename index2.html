@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dangerzone Standard</title>
+
+<link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <h1>🛡 Dangerzone Standard</h1>
+        <p>Versión gratuita</p>
+    </div>
+
+    <button class="btnLogin" onclick="abrirLogin()">
+        👤 Iniciar sesión
+    </button>
+
+</header>    
+
+<div id="loginModal" class="modal">
+
+    <div class="modal-contenido">
+
+        <h2>Acceso Premium</h2>
+
+        <input type="text" id="usuario" placeholder="Usuario">
+
+        <input type="password" id="clave" placeholder="Contraseña">
+
+        <button onclick="login()">
+            Entrar
+        </button>
+
+        <button class="btnCerrar" onclick="cerrarLogin()">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>   
+
+<div class="app">
+
+
+<section class="hero">
+
+    <div class="texto">
+        <h2>Dangerzone Standard</h2>
+        <p>
+            Tu seguridad es nuestra prioridad. Activa el botón SOS en caso de emergencia.
+        </p>
+    </div>
+
+    <div class="emergencia-centro">
+
+        <h3>Botón de Emergencia</h3>
+
+        <button class="btnSOS" onclick="activarSOS()">
+            SOS
+        </button>
+
+        <p id="contador">
+            Intentos restantes: 3
+        </p>
+
+    </div>
+
+ 
+
+
+<div class="titulo-seccion">
+<h2>⚡ Acciones rápidas</h2>
+<p>Herramientas disponibles</p>
+</div>
+
+<div class="cards">
+
+<div class="card seguridad" onclick="activarSOS()">
+<div class="icon">🚨</div>
+<div>
+<h3>Activar SOS</h3>
+<p>Alerta inmediata</p>
+</div>
+</div>
+
+<div class="card seguridad" onclick="llamarEmergencia('Policía Nacional','105')">
+<div class="icon">📞</div>
+<div>
+<h3>Llamar al 105</h3>
+<p>Policía Nacional</p>
+</div>
+</div>
+
+<div class="card seguridad" onclick="llamarEmergencia('SAMU','106')">
+<div class="icon">🚑</div>
+<div>
+<h3>Emergencias</h3>
+<p>Ambulancias</p>
+</div>
+</div>
+
+<div class="card seguridad" onclick="llamarEmergencia('Bomberos','116')">
+<div class="icon">🔥</div>
+<div>
+<h3>Bomberos</h3>
+<p>Línea 116</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="panel">
+
+<div class="titulo-seccion">
+<h2>👥 Contactos de emergencia</h2>
+<p></p>
+</div>
+
+<div class="cards">
+
+<div class="card seguridad">
+<div class="icon">⚕️</div>
+<div>
+<h3>Centro de salud</h3>
+<p>clínica</p>
+</div>
+</div>
+
+<div class="card seguridad">
+<div class="icon">🛡️</div>
+<div>
+<h3>Defensa Civil</h3>
+<p>gestión de emergencias</p>
+</div>
+</div>
+
+<div class="card seguridad">
+<div class="icon">👮</div>
+<div>
+<h3>Comisaría</h3>
+<p>Contacto local</p>
+</div>
+</div>
+
+<div class="card seguridad">
+<div class="icon">🏥</div>
+<div>
+<h3>Hospital</h3>
+<p>Emergencias</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<audio id="sirena">
+<source src="audio/sirena.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let intentos=0;
+
+function activarSOS(){
+
+    if(intentos >= 3){
+
+        alert("⚠️ Has llegado al límite de intentos del botón SOS.\n\nActualiza a Dangerzone Premium para activaciones ilimitadas.");
+        return;
+
+    }
+
+    intentos++;
+
+    let sonido = document.getElementById("sirena");
+
+    
+    sonido.volume = 0.03;
+
+    
+    sonido.currentTime = 0;
+
+    
+    sonido.play();
+
+    
+    setTimeout(function(){
+
+        sonido.pause();
+        sonido.currentTime = 0;
+
+    },2000);
+
+    document.getElementById("contador").innerHTML =
+    "Intentos restantes: " + (3-intentos);
+
+    let hora = new Date().toLocaleTimeString();
+
+    alert(
+        "🚨 SOS ACTIVADO\n\n" +
+        "📍 Simulación de alerta enviada\n" +
+        "👥 Contactos notificados\n" +
+        "⏰ Hora: " + hora
+    );
+
+}
+
+function llamarEmergencia(servicio, numero){
+
+    let confirmar = confirm(
+        "¿Deseas llamar a " + servicio + " (" + numero + ")?"
+    );
+
+    if(!confirmar){
+        return;
+    }
+
+    alert("📞 Marcando " + numero + "...");
+
+    setTimeout(function(){
+
+        if(servicio === "Policía Nacional"){
+
+            alert(
+                "👮 Policía Nacional\n\n" +
+                "Central de Emergencias 105\n\n" +
+                "¿Cuál es su emergencia?"
+            );
+
+        }else if(servicio === "SAMU"){
+
+            alert(
+                "🚑 Servicio de Atención Móvil de Urgencia\n\n" +
+                "Indique si existen personas heridas."
+            );
+
+        }else{
+
+            alert(
+                "🚒 Central de Bomberos\n\n" +
+                "¿Se trata de un incendio o rescate?"
+            );
+
+        }
+
+        setTimeout(function(){
+
+            alert(
+                "✅ Solicitud registrada\n\n" +
+                "📍 Ubicación enviada\n" +
+                "🚓 Unidad más cercana en camino\n" +
+                "⏱️ Tiempo estimado: 5 minutos"
+            );
+
+        },2000);
+
+    },1500);
+
+}
+
+function abrirLogin(){
+    document.getElementById("loginModal").style.display="flex";
+}
+
+function cerrarLogin(){
+    document.getElementById("loginModal").style.display="none";
+}
+
+function login(){
+
+    let usuario = document.getElementById("usuario").value;
+    let clave = document.getElementById("clave").value;
+
+
+    if(usuario === "premium" && clave === "1234"){
+
+        alert("Bienvenido a Dangerzone Premium");
+
+        window.location.href = "index.html";
+
+    }else{
+
+        alert("Usuario o contraseña incorrectos");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

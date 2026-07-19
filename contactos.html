@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contactos SafeCity</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<header class="verde">
+
+<a href="index.html">←</a>
+
+
+<div>
+
+<h2>Contactos</h2>
+
+<p>Red de seguridad personal</p>
+
+</div>
+
+
+<div class="icon-header">
+👥
+</div>
+
+
+</header>
+
+
+
+<section class="contenido">
+
+
+<div class="titulo">
+
+<h1>Contactos de emergencia</h1>
+
+<p>
+Personas que recibirán tu alerta SOS
+</p>
+
+</div>
+
+
+<div class="busqueda">
+
+<input 
+id="buscar"
+placeholder="🔎 Buscar contacto..."
+>
+
+
+</div>
+
+
+<section class="grupo">
+
+    <h2>🚨 Servicios de emergencia</h2>
+
+    <div class="servicio">
+
+        <div class="serv-icon">🚓</div>
+
+        <div class="datos">
+            <h3>Policía Nacional</h3>
+            <p>Emergencias: 105</p>
+            <small>Disponible las 24 horas</small>
+        </div>
+
+        <button onclick="llamarEmergencia('Policía','105')">
+            📞 Llamar
+        </button>
+
+    </div>
+
+    <div class="servicio">
+
+        <div class="serv-icon">🚑</div>
+
+        <div class="datos">
+            <h3>SAMU - Ambulancia</h3>
+            <p>Emergencias médicas: 106</p>
+            <small>Atención inmediata</small>
+        </div>
+
+        <button onclick="llamarEmergencia('Ambulancia','106')">
+            📞 Llamar
+        </button>
+
+    </div>
+
+    <div class="servicio">
+
+        <div class="serv-icon">🚒</div>
+
+        <div class="datos">
+            <h3>Bomberos</h3>
+            <p>Emergencias: 116</p>
+            <small>Incendios y rescates</small>
+        </div>
+
+        <button onclick="llamarEmergencia('Bomberos','116')">
+            📞 Llamar
+        </button>
+
+    </div>
+
+</section>
+
+
+<div class="info">
+
+
+<h3>
+🛡 Protección activa
+</h3>
+
+
+<p>
+Al activar SOS se enviará tu ubicación,
+hora y mensaje de emergencia.
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+<nav>
+
+<a href="index.html">Inicio</a>
+
+<a href="sos.html">SOS</a>
+
+<a href="ubicacion.html">Mapa</a>
+
+<a href="alertas.html">Alertas</a>
+
+
+</nav>
+
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
